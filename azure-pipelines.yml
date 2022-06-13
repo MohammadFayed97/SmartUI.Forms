@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: Default
+  
+variables:
+  buildConfiguration: 'Release'
+  version: 1.0.0
+  myproject: 'src/SmartUI.Forms/SmartUI.Forms.csproj'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .Net v5.0.x'
+  inputs:
+    version: '5.0.x'
+- task: DotNetCoreCLI@2
+  displayName: 'Restore Packages'
+  inputs:
+    command: 'restore'
+    projects: '$(myproject)'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build $(buildConfiguration) for Project $(myproject)'
+  inputs:
+    command: 'build'
+    projects: $(myproject)
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Package'
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(myproject)'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'version'
+
+- task: NuGetCommand@2
+  displayName: 'Push package to nuget.org'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget'

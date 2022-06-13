@@ -1,0 +1,71 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="person">
+    <DataAnnotationsValidator />
+    <div class="card">
+        <div class="card-header">
+            InputNumber with validation on key pressed
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Nullable Intger type with InputNumber</label>
+                    <SmartInputNumber TValue="int?" @bind-Value="person.IntNumber" Placeholder="Enter Intger Value" />
+                    <ValidationMessage For="() => person.IntNumber" />
+                    <label>@person.IntNumber</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Float type with InputNumber</label>
+                    <SmartInputNumber TValue="float" @bind-Value="person.FloatNumber" IsChangeOnKeyPress="true" Placeholder="Enter Float Value" />
+                    <ValidationMessage For="() => person.FloatNumber" />
+                    <label>@person.FloatNumber</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            InputText
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>InputText change on key press</label>
+                    <SmartInputText CssClass="form-control-border border-width-2" @bind-Value="person.SampleText" IsChangeOnKeyPress="true"
+                                    Placeholder="Enter SampleText Here" OnChange="(e) => Console.WriteLine(e)" />
+                    <label>@person.SampleText</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>InputText with validation on key press</label>
+                    <SmartInputText @bind-Value="person.ValidationText" IsChangeOnKeyPress="true" Placeholder="Enter ValidationText Here" OnChange="(e) => Console.WriteLine(e)" />
+                    <ValidationMessage For="() => person.ValidationText" />
+                    <label>@person.ValidationText</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>InputText disabled with custom css class</label>
+                    <SmartInputText CssClass="form-control-border border-width-2" Disabled="true" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</EditForm>
+@code {
+    private Person person = new Person();
+
+    private class Person
+    {
+        [Required]
+        [Range(2, 10)]
+        public int? IntNumber { get; set; }
+
+        [Required]
+        [Range(2, 10.5)]
+        public float FloatNumber { get; set; }
+
+        [Required]
+        public string ValidationText { get; set; }
+        public string SampleText { get; set; }
+    }
+}

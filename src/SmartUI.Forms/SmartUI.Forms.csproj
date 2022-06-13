@@ -2,12 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Description>
+      The light weight Form elements Components (e.g. Input Number, Input Text, DropDownList, MultiSelect and more) supports more additional features than the existing in Blazor.
+    </Description>
+    <Copyright>MohammadFayed©2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>InputNumber; InputText; DropDown; DropDownList; MultiSelect; Form; Forms; EditForm;</PackageTags>
   </PropertyGroup>
 
+  
   <ItemGroup>
     <Content Include="BaseComponent.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />

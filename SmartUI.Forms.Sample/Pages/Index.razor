@@ -49,11 +49,26 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header">
+            DropDownList
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Basic DropDownList</label>
+                    <SmartDropDownList TModel="Person" TValue="int?" DataSource="_people" @bind-Value="person.IntNumber" Disabled="person.IntNumber == 20" Placeholder="Select">
+                        <DropDownFieldSetting Value="IntNumber" Text="SampleText" />
+                    </SmartDropDownList>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </EditForm>
 @code {
     private Person person = new Person();
-
+    private List<Person> _people;
     private class Person
     {
         [Required]
@@ -67,5 +82,14 @@
         [Required]
         public string ValidationText { get; set; }
         public string SampleText { get; set; }
+    }
+    protected override void OnInitialized()
+    {
+        _people = Enumerable.Range(1, 10).Select(e => new Person
+            {
+                IntNumber = e,
+                SampleText = $"Sample Text {e}",
+                ValidationText = $"Validation DropDown {e}"
+            }).ToList();
     }
 }

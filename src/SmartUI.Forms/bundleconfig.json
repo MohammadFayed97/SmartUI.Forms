@@ -1,0 +1,10 @@
+[
+  {
+    "outputFileName": "wwwroot/smartui-forms.css",
+    "inputFiles": [
+      "wwwroot/css/fontawesome/css/all.css",
+      "wwwroot/css/bootstrap/bootstrap.css",
+      "wwwroot/css/smartui-forms.css"
+    ]
+  }
+]

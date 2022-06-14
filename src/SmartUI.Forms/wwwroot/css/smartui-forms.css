@@ -1,0 +1,122 @@
+
+.smart-dropdown {
+    padding: 0.4375rem;
+    border: 1px solid #e0e1e4;
+    /* border-radius: 4px; */
+    box-shadow: none;
+    background-color: #ffffff;
+    height: 2.25rem;
+    line-height: 1.429;
+    color: #4f4f50;
+    font-size: 0.875rem;
+    transition: all 0.1s linear;
+    outline: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.smart-dropdown:not(.smart-state-disabled):hover {
+    box-shadow: none;
+    border: 1px solid #376df5;
+}
+
+.smart-dropdown-container:focus {
+    box-shadow: 0px 0px 0px 1px #ffffff, 0px 0px 0px 3px rgb(17 81 243 / 20%);
+}
+
+.smart-dropdown .smart-dropdown-hidden-accessible {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.smart-dropdown-clear .smart-dropdown-label {
+    padding-right: 2.5rem;
+}
+
+.smart-dropdown .smart-dropdown-label {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 1.25rem;
+}
+
+.smart-dropdown-trigger {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.smart-dropdown-trigger .smart-dropdown-trigger-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    font-size: 0.75rem;
+    margin: 0 0.5rem 0 0;
+}
+
+.smart-dropdown-container .smart-dropdown-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #FFF;
+    border: 1px solid #e0e1e4;
+    z-index: 2000;
+    min-width: 100%;
+}
+
+.smart-dropdown-container {
+    position: relative;
+    height: 2.25rem;
+}
+
+.smart-dropdown-popup .smart-dropdown-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.smart-dropdown-popup .smart-dropdown-items li.smart-dropdown-item {
+    padding: 0.5rem;
+    transition: all 0.1s linear;
+    cursor: default;
+    font-size: 0.875rem;
+    overflow-wrap: break-word;
+}
+
+.smart-dropdown-popup .smart-dropdown-items li.smart-dropdown-item:hover,
+.smart-dropdown-popup .smart-dropdown-items li.smart-dropdown-item.selected {
+    background-color: rgba(17, 81, 243, 0.16);
+    color: #1151F3;
+    border-radius: 0;
+}
+
+.smart-dropdown-container *::-webkit-scrollbar-thumb {
+    background: rgba(141, 142, 144, 0.5);
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 8px;
+}
+
+.smart-dropdown-container *::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+}
+
+.smart-dropdown-container *::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+}
+.smart-state-disabled {
+    color: #4f4f50;
+    box-shadow: none;
+    background-color: #f4f5f9;
+    border: 1px solid #e0e1e4;
+    opacity: 0.5;
+}

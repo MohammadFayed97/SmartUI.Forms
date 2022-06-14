@@ -1,0 +1,69 @@
+﻿@namespace SmartUI.Forms
+@using AntiRap.Core.Utilities
+
+@typeparam TModel
+@typeparam TValue
+
+@inherits BaseInputComponent<TValue>
+@implements IInnoDropDownList
+
+
+<CascadingValue Value="this" IsFixed="true">
+    @ChildContent
+</CascadingValue>
+
+@if (_dropDownFieldSetting is not null)
+{
+    <div class="smart-dropdown-container">
+        <div class="smart-dropdown smart-dropdown-clear @(Disabled ? "smart-state-disabled" : "") w-100" @onclick="ToggleDropDown">
+            <div class="smart-dropdown-hidden-accessible">
+                <!--!-->
+                <input disabled="@Disabled" style="width:100%" aria-haspopup="listbox" readonly="" type="text" tabindex="-1"
+                   aria-label="">
+                <!--!-->
+            </div>
+            <label class="smart-dropdown-label smart-inputtext ">
+                @if (string.IsNullOrEmpty(CurrentValueAsString))
+                {
+                    @Placeholder
+                }
+                else
+                {
+                    @CurrentItemTextAsString
+                }
+            </label>
+            <div class="smart-dropdown-trigger  smart-corner-right">
+                <span class="smart-dropdown-trigger-icon fa fa-caret-down"></span>
+            </div>
+        </div>
+        @if (_isOpend)
+        {
+            <div class="smart-dropdown-popup">
+                <ul class="smart-dropdown-items">
+                    @if (entities.Count == 0)
+                    {
+                        <li role="option" class="smart-dropdown-item no-record">@NoRecordsText</li>
+                    }
+                    else
+                    {
+                        @foreach (TModel item in entities)
+                        {
+                            var dropDownItemText = PropertyHandler.GetPropertyValue(item, _dropDownFieldSetting.Text);
+                            <li @key="item" role="option" class="smart-dropdown-item @(dropDownItemText?.ToString() == CurrentItemTextAsString ? "selected" : null)"
+                                aria-label="@dropDownItemText" @onclick="() => OnValueSelected(item)">
+                                @if (_dropDownTemplate?.TextTemplate is not null)
+                                {
+                                    @_dropDownTemplate.TextTemplate(item)
+                                }
+                                else
+                                {
+                                    @PropertyHandler.GetPropertyValue(item, _dropDownFieldSetting.Text)
+                                }
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+}

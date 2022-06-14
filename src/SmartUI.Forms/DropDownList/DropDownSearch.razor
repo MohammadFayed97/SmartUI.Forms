@@ -1,0 +1,29 @@
+﻿@namespace SmartUI.Forms
+
+@using System.Threading
+
+<SmartInputText CssClass="select-input form-control w100" Placeholder="Search..." OnChange="OnValueChanged" />
+
+@code {
+    [Parameter]
+    public EventCallback<string> OnSearch { get; set; }
+
+    private Timer _timer;
+    private string searchValue;
+
+    private void OnValueChanged(string value)
+    {
+        searchValue = value;
+        if (_timer is not null)
+            _timer.Dispose();
+
+        _timer = new Timer(OnTimerElapsed, null, 100, 0);
+    }
+
+    private async void OnTimerElapsed(object sender)
+    {
+        await OnSearch.InvokeAsync(searchValue);
+
+        _timer.Dispose();
+    }
+}

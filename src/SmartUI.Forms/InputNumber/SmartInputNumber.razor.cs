@@ -75,11 +75,11 @@
             if (IsIntger(typeof(TValue)))
                 _isValueIntger = true;
 
-            if (ParentEditContext is not null)
-            {
+            if(ValueExpression is not null)
                 _fieldIdentifier = FieldIdentifier.Create(ValueExpression);
+
+            if (ParentEditContext is not null)
                 ParentEditContext.OnValidationStateChanged += OnValidationChanged;
-            }
 
         }
         protected override void OnParametersSet() => InternalValue = Value;

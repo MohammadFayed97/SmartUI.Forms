@@ -6,9 +6,9 @@
       The light weight Form elements Components (e.g. Input Number, Input Text, DropDownList, MultiSelect and more) supports more additional features than the existing in Blazor.
     </Description>
     <Copyright>MohammadFayed©2022</Copyright>
-    <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>InputNumber; InputText; DropDown; DropDownList; MultiSelect; Form; Forms; EditForm;</PackageTags>
-    <PackageLicenseFile>..\..\LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
@@ -21,7 +21,13 @@
   <ItemGroup>
     <None Include="..\..\README.md">
       <Pack>True</Pack>
-      <PackagePath>..\..\</PackagePath>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

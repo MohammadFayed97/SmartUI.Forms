@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Mohammad Fayed</Authors>
     <Description>
       The light weight Form elements Components (e.g. Input Number, Input Text, DropDownList, MultiSelect and more) supports more additional features than the existing in Blazor.
     </Description>
     <Copyright>MohammadFayed©2022</Copyright>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>InputNumber; InputText; DropDown; DropDownList; MultiSelect; Form; Forms; EditForm;</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -23,12 +23,6 @@
 
   
   <ItemGroup>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -43,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntiRap.Core" Version="1.0.2" />
+    <PackageReference Include="AntiRap.Core" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.16" />
   </ItemGroup>
 

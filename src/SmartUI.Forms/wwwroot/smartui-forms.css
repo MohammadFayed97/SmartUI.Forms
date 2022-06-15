@@ -16927,3 +16927,6 @@ a.text-dark:hover, a.text-dark:focus {
     border: 1px solid #e0e1e4;
     opacity: 0.5;
 }
+.smart-input{
+    border-radius : 0 !important;
+}
